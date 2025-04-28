@@ -15,4 +15,10 @@ spec:
     automated:
       prune: true  # Automatically prune resources that are no longer in Git
       selfHeal: true  # Automatically fix drift between Git and live state
+      syncOptions:
+        - ApplyOutOfSyncOnly=true  # Apply only if out of sync
+        - PruneLast=true  # Ensure resources are applied first, then pruned
+        - PrunePropagationPolicy=foreground  # Ensure proper cleanup
+        - ServerSideApply=true  # Use server-side apply for better handling
+    # This ensures ArgoCD checks for new images automatically when changes are detected.
 
