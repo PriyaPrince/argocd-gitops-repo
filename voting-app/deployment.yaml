@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: voting-app-deployment
+  labels:
+    app: voting-app
+  annotations:
+    # Image Updater annotation to track Docker image updates
+    argocd-image-updater.argoproj.io/image-list: "voting-app=priyaprince/voting-app"
+spec:
+  replicas: 3  # Number of pods you want to run
+  selector:
+    matchLabels:
+      app: voting-app
+  template:
+    metadata:
+      labels:
+        app: voting-app
+    spec:
+      containers:
+        - name: voting-app
+          image: priyaprince/voting-app:v1  # Placeholder image, actual tag will be updated
+          ports:
+            - containerPort: 8080
+

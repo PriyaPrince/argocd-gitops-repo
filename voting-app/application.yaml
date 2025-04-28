@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: voting-app
+  namespace: argocd
+spec:
+  destination:
+    server: https://kubernetes.default.svc  # Pointing to your Kubernetes cluster
+    namespace: default  # Namespace in which your app will be deployed
+  source:
+    repoURL: https://github.com/priyaprince/argocd-gitops-repo  # Replace with your GitHub repo URL
+    targetRevision: HEAD  # Sync the latest commit
+    path: path/to/your/manifests  # Path to your Kubernetes manifests (deployment.yaml, service.yaml, etc.)
+  syncPolicy:
+    automated:
+      prune: true  # Automatically prune resources that are no longer in Git
+      selfHeal: true  # Automatically fix drift between Git and live state
+

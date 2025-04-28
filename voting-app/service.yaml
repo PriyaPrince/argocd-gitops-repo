@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: voting-app-service
+spec:
+  selector:
+    app: voting-app
+  ports:
+    - protocol: TCP
+      port: 80  # Port exposed inside the cluster
+      targetPort: 8080  # The port your container listens on
+  type: NodePort  # Exposes the service externally via a NodePort
+
