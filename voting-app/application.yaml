@@ -13,6 +13,7 @@ spec:
     repoURL: https://github.com/priyaprince/argocd-gitops-repo  # Replace with your GitHub repo URL
     targetRevision: HEAD  # Sync the latest commit
     path: voting-app  # Path to your Kubernetes manifests (deployment.yaml, service.yaml, etc.)
+    type: Kustomize
   syncPolicy:
     automated:
       prune: true  # Automatically prune resources that are no longer in Git
