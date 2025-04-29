@@ -4,9 +4,7 @@ metadata:
   name: voting-app-deployment
   labels:
     app: voting-app
-  annotations:
-    # Image Updater annotation to track Docker image updates in docker hub
-    argocd-image-updater.argoproj.io/image-list: "voting-app=docker.io/priyaprince/voting-app:latest" 
+  
 spec:
   replicas: 3  # Number of pods you want to run
   selector:
