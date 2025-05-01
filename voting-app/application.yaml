@@ -3,25 +3,18 @@ kind: Application
 metadata:
   name: voting-app
   namespace: argocd
-  annotations:
-    argocd-image-updater.argoproj.io/image-list: "voting-app=docker.io/priyaprince/voting-app"
 spec:
+  project: default
   destination:
-    server: https://kubernetes.default.svc  # Pointing to your Kubernetes cluster
-    namespace: default  # Namespace in which your app will be deployed
+    server: https://kubernetes.default.svc  
+    namespace: default  
   source:
-    repoURL: https://github.com/priyaprince/argocd-gitops-repo  # Replace with your GitHub repo URL
-    targetRevision: HEAD  # Sync the latest commit
-    path: voting-app  # Path to your Kubernetes manifests (deployment.yaml, service.yaml, etc.)
-    type: Kustomize
+    repoURL: https://github.com/priyaprince/argocd-gitops-repo  
+    targetRevision: HEAD  
+    path: voting-app  
   syncPolicy:
     automated:
-      prune: true  # Automatically prune resources that are no longer in Git
-      selfHeal: true  # Automatically fix drift between Git and live state
-      syncOptions:
-        - ApplyOutOfSyncOnly=true  # Apply only if out of sync
-        - PruneLast=true  # Ensure resources are applied first, then pruned
-        - PrunePropagationPolicy=foreground  # Ensure proper cleanup
-        - ServerSideApply=true  # Use server-side apply for better handling
-    # This ensures ArgoCD checks for new images automatically when changes are detected.
+      prune: true  
+      selfHeal: true  
+      
 
