@@ -5,7 +5,7 @@ metadata:
   namespace: argocd
   annotations: 
     argocd-image-updater.argoproj.io/image-list: priyaprince/voting-app:v1.x
-    argocd-image-updater.argoproj.io/voting-app.update-strategy: semver
+    argocd-image-updater.argoproj.io/voting-app.update-strategy: name
     argocd-image-updater.argoproj.io/write-back-method: git:secret:argocd/git-creds
 spec:
   project: default
