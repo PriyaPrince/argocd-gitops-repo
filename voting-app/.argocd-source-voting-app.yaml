@@ -1,0 +1,3 @@
+kustomize:
+  images:
+  - priyaprince/voting-app:v1.0
