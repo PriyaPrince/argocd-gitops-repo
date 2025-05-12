@@ -9,5 +9,5 @@ spec:
     - protocol: TCP
       port: 80  # Port exposed inside the cluster
       targetPort: 8080  # The port your container listens on
-  type: ClusterIP 
+  type: NodePort 
 
